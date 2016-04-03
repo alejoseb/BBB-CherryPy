@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <link href="static/css/style.css" rel="stylesheet">
+     <script src="static/scripts/jquery-2.2.2.min.js"></script>
+     <!--<script
+			  src="http://code.jquery.com/jquery-2.2.2.js"
+			  integrity="sha256-4/zUCqiq0kqxhZIyp4G0Gk+AOtCJsY1TA00k5ClsZYE="
+			  crossorigin="anonymous"></script>-->
+	
+     <script type="text/javascript">
+       $(document).ready(function() {
+          $("#led-on").click(function(e) {
+           $.ajax({
+              type: "ON",
+              url: "/generator"
+           })
+           .done(function(string) {
+           $("#led-status").val(string); 
+         
+           });
+           e.preventDefault();
+         });
+         
+          $("#led-off").click(function(e) {
+           $.ajax({
+              type: "OFF",
+              url: "/generator"
+           })
+           .done(function(string) {
+            $("#led-status").val(string) ; 
+           
+           });
+           e.preventDefault();
+         });
+         
+          $("#led-blink").click(function(e) {
+           $.ajax({
+              type: "BLINK",
+              url: "/generator"
+           })
+           .done(function(string) {
+            $("#led-status").val(string) ; 
+           });
+           e.preventDefault();
+         });
+         
+       });
+     </script>
+   </head>
+   <body>
+     <div>
+         <input type="text"  id="led-status" />
+         <button id="led-on">Led ON</button>
+         <button id="led-off">Led OFF</button>
+         <p>
+             <button id="led-blink">Led blink</button>
+         
+         </p>
+     </div>
+   </body>
+</html>
