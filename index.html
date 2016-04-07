@@ -44,6 +44,18 @@
            });
            e.preventDefault();
          });
+        
+          $("#Coordinates").click(function(e) {
+           $.ajax({
+              type: "PUT",
+              url: "/generator",
+              data: { "x":$("#xc").val(), "y":$("#yc").val()} 
+           })
+           .done(function(string) {
+          
+           });
+           e.preventDefault();
+         });
          
        });
      </script>
@@ -54,9 +66,14 @@
          <button id="led-on">Led ON</button>
          <button id="led-off">Led OFF</button>
          <p>
-             <button id="led-blink">Led blink</button>
-         
+             <button id="led-blink">Led Blink</button>
          </p>
+          <p>
+            <p>x:<input type="text"  id="xc" /></p>
+            <p>y:<input type="text"  id="yc" /></p>
+            <button id="Coordinates">Read coordinates</button>
+         </p>
+         
      </div>
    </body>
 </html>
