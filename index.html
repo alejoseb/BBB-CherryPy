@@ -57,6 +57,20 @@
            e.preventDefault();
          });
          
+ 	 $("#LeerCoordinates").click(function(e) {
+           $.ajax({
+              type: "LEER",
+              url: "/generator"
+               })
+           .done(function(string) {
+	      $("#textarea1").val(string);
+           });
+           e.preventDefault();
+         });
+
+
+
+
        });
      </script>
    </head>
@@ -71,8 +85,13 @@
           <p>
             <p>x:<input type="text"  id="xc" /></p>
             <p>y:<input type="text"  id="yc" /></p>
-            <button id="Coordinates">Read coordinates</button>
-         </p>
+            <p> <button id="Coordinates">Write coordinates</button></p>
+            <p> <button id="LeerCoordinates">Read coordinates</button></p>
+	    <p><textarea id="textarea1"  name="textarea" style="width:250px;height:150px;"> </textarea></p>
+   	 
+
+	
+	</p>
          
      </div>
    </body>
